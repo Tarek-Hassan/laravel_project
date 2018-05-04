@@ -1,0 +1,6 @@
+
+$git config --global user.name "TarekHassan"
+$git config --global user.email "tarek446240@gamil.com"
+$git commit -m "(4/5/2018) v(44)"
+$git remote add origin git clone https://tarek-hassan-ahmed@bitbucket.org/tarek-hassan-ahmed/pmanger.git
+$git push origin master

@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/',function(){ return view('welcome');});
 // Route::get('/profile',function(){ return view('pages.profile');});
 // Route::get('/notifications',function(){ return view('pages.notifications');});
 // Route::get('/login',function(){ return view('pages.login');});
@@ -29,14 +28,20 @@ Route::get('/',function(){ return view('welcome');});
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/',function(){ return view('welcome');});
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth'])->group(function(){
+	
+	
+	
+Route::get('projects/create/{company_id?}', 'ProjectsController@create');
 Route::resource('companies','CompaniesController');
 Route::resource('projects','ProjectsController');
 Route::resource('roles','RolesController');
 Route::resource('tasks','TasksController');
 Route::resource('users','UsersController');
+});
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');

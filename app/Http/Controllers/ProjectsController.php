@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Project;
+use App\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectsController extends Controller
-{
-     /**
+{/**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -28,10 +29,12 @@ class ProjectsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create( $company_id )
     {
         //
-     return view('projects.create') ;
+
+		
+     return view('projects.create',['company_id' => $company_id ]);
 
  }
 
@@ -45,69 +48,71 @@ class ProjectsController extends Controller
     {
         //
         if(Auth::check()){
-         $Project=Project::create([
-            'name'=>$request->input('ProjectName'),
-            'description'=>$request->input('ProjectDescription'),
+         $project=Project::create([
+            'name'=>$request->input('projectName'),
+            'description'=>$request->input('projectDescription'),
+			'company_id'=>$request->input('company_id'),
+			
             'user_id'=>Auth::user()->id
             ]);
-         if($Project){ 
-            return redirect()->route('projects.show',['Project'=>$Project->id])->with('success','Project created successfully');
+         if($project){ 
+            return redirect()->route('projects.show',['project'=>$project->id])->with('success','project created successfully');
         }
     }
-    return back()->withInput()->with('errors','Project could not be created ');
+    return back()->withInput()->with('errors','project could not be created ');
 }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Project  $Project
+     * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $Project)
+    public function show(Project $project)
     {
         //
-        // $Project=Project::where('id',$Project->id)->first();
-     $Project=Project::find($Project->id);
-     return view('projects.show',['Project'=>$Project]);
+        // $project=Project::where('id',$project->id)->first();
+     $project=Project::find($project->id);
+     return view('projects.show',['project'=>$project]);
  }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Project  $Project
+     * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit(Project $Project)
+    public function edit(Project $project)
     {
         //
-     $Project=Project::find($Project->id);
-     return view('projects.edit',['Project'=>$Project]);
+     $project=Project::find($project->id);
+     return view('projects.edit',['project'=>$project]);
  }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Project  $Project
+     * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Project $Project)
+    public function update(Request $request, Project $project)
     {
         //
-         // $Project=Project::find($Project->id);
-         // $Project->name=$request->ProjectName;
-         // $Project->description=$request->ProjectDescription;
-         // $Project->save();
-        // return view('projects.show',['Project'=>$Project]);
-        $findProject=Project::find($Project->id);
-        $ProjectUpdate=$findProject->update([
-            'name'=>$request->input('ProjectName'),
-            'description'=>$request->input('ProjectDescription')
+         // $project=Project::find($project->id);
+         // $project->name=$request->projectName;
+         // $project->description=$request->projectDescription;
+         // $project->save();
+        // return view('projects.show',['project'=>$project]);
+        $findProject=Project::find($project->id);
+        $projectUpdate=$findProject->update([
+            'name'=>$request->input('projectName'),
+            'description'=>$request->input('projectDescription')
             ]);
-        if($ProjectUpdate){ 
-            return redirect()->route('projects.show',['Project'=>$Project->id])->with('success','Project update successfully');
+        if($projectUpdate){ 
+            return redirect()->route('projects.show',['project'=>$project->id])->with('success','project update successfully');
         }
-        return back()->withInput()->with('errors','Project could not be updated ');
+        return back()->withInput()->with('errors','project could not be updated ');
 
 
     }
@@ -115,17 +120,17 @@ class ProjectsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Project  $Project
+     * @param  \App\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Project $Project)
+    public function destroy(Project $project)
     {
         //
-        // dd($Project);
-        $findProject=Project::find($Project->id);
+        // dd($project);
+        $findProject=Project::find($project->id);
         if($findProject->delete()){ 
-            return redirect()->route('projects.index')->with('success','Project deleted successfully');
+            return redirect()->route('projects.index')->with('success','project deleted successfully');
         }
-        return back()->withInput()->with('errors','Project could not be deleted ');
+        return back()->withInput()->with('errors','project could not be deleted ');
     }
 }

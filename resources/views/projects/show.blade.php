@@ -8,23 +8,14 @@
 
       <!-- Jumbotron -->
       <div class="col-md-8 col-lg-8 col-sm-9 pull-left">
-      	<div class="jumbotron">
-      		<h1>{{$company->name}}</h1>
-      		<p class="lead">{{$company->description}}</p>
+      	<div class="well well-lg">
+			
+      		<h1>{{$project->name}}</h1>
+      		<p class="lead">{{$project->description}}</p>
       	</div>
 
       	<!-- Example row of columns -->
-      	<div class="row " style="background:white; margin: 10px">
-      		@foreach($company->projects as $project)
-      		<div class="col-lg-4">
-      			<h2>{{$project->name}}</h2>
-      			<p class="text-danger">{{$project->description}}</p>
-      			<p>
-      				<a class="btn btn-primary" href="/projects/{{$project->id}}" role="button">View project »</a>
-      			</p>
-      		</div>
-      		@endforeach
-      	</div>
+      	
       </div>
 
 
@@ -32,11 +23,11 @@
       	<div class="sidebar-module">
       		<h4>Actions</h4>
       		<ol class="list-unstyled">
-      			<li><a href="/companies/{{$company->id}}/edit">Edite</a></li>
-      			<li><a href="/companies/create">AddNewProject</a></li>
-      			<li><a href="/companies">ViewCompanies</a></li>
-      			<li><a href="/companies/create">AddNewcompanies</a></li>
+      			<li><a href="/projects/{{$project->id}}/edit">Edite</a></li>
+      			
+      			<li><a href="/projects">Viewprojects</a></li>
       			<br/>
+				@if ( $project->user_id == Auth::user()->id)
       			<li>
       				<a href="#" onclick="
       				var result= confirm('ARE yOU Sure You Wish TO delete this project?');
@@ -47,13 +38,14 @@
       				}
       				">
       				Delete</a>
-      				<form  id="delete-form" action="{{route('companies.destroy',[$company->id])}}" 
+      				<form  id="delete-form" action="{{route('projects.destroy',[$project->id])}}" 
       					method="post" accept-charset="utf-8">
       					<input type="hidden" name="_method" value="delete">
       					{{csrf_field()}}
 
       				</form>
       			</li>
+				@endif
       		</ol>
       	</div>
       	<div class="sidebar-module">

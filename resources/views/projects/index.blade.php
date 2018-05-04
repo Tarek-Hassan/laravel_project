@@ -4,14 +4,14 @@
 	
 	<div class="panel panel-primary ">
 		<div class="panel-heading">
-				COMpANYS
-				<a href="/companies/create" class="btn btn-primary  btn-sm pull-right" >Create New</a>
+				projectS
+				<a href="/projects/create" class="btn btn-primary  btn-sm pull-right" >Create New</a>
 		</div>
 		<div class="panel-body">
 			<ul class="list-group">
-				@foreach($companies as $company)
+				@foreach($projects as $project)
 				<li class="list-group-item">
-					<a href="/companies/{{$company->id}}"> {{$company->name}}</a>
+					<a href="/projects/{{$project->id}}"> {{$project->name}}</a>
 				</li>
 				@endforeach
 

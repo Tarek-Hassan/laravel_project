@@ -7,7 +7,8 @@
       
 
       <!-- Jumbotron -->
-      <div class="col-md-8 col-lg-8 col-sm-9 pull-left">
+      <div class="col-md-8 col-lg-8 col-sm-9 pull-left" style=" background=:white" >
+	  <h1> creta Company</h1>
 
       	<!-- Example row of columns -->
       	<div class="row " class="col-md-12 col-lg-12 col-sm-12 " style="background:white; margin: 10px">
