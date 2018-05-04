@@ -15,6 +15,12 @@ class Comment extends Model
     {
         return $this->belongsToMany ('App\User');
     }
+	
+	public function commentable()
+    {
+        return $this->morphTo();
+    }
+	
 
 
 }

@@ -18,6 +18,10 @@ class Company extends Model
     {
         return $this->hasMany('App\Project');
     }
+	public function comments()
+    {
+        return $this->morphTo('App\Comment','commentable');
+    }
     //  public function tasks()
     // {
     //     return $this->hasMany('App\Task');

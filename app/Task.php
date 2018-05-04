@@ -24,5 +24,9 @@ public function companies()
     {
         return $this->belongsTo('App\Company');
     }
+	public function comments()
+    {
+        return $this->morphTo('App\Comment','commentable');
+    }
 
 }

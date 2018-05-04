@@ -23,5 +23,10 @@ public function companies()
     {
         return $this->hasMany('App\Task');
     }
+	
+	public function comments()
+    {
+        return $this->morphTo('App\Comment','commentable');
+    }
 
 }
