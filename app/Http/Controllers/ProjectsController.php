@@ -29,12 +29,15 @@ class ProjectsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create( $company_id )
+    public function create( $company_id=null )
     {
         //
-
-		
-     return view('projects.create',['company_id' => $company_id ]);
+		$companies=null;
+	if(!$company_id)
+	{
+		$companies=Company::where('user_id',Auth::user()->id)->get();
+	}
+     return view('projects.create',['company_id' => $company_id ,'companies'=>$companies]);
 
  }
 

@@ -14,10 +14,10 @@
       	</div>
 
       	<!-- Example row of columns -->
-		<a href="/projects/create/{{ $company->id }}" class="pull-right btn btn-defualt btn-sm">AddProject</a>
       	<div class="row " style="background:white; margin: 10px">
+		<a href="/projects/create/{{ $company->id }}" class="pull-right btn btn-defualt btn-sm">AddProject</a>
       		@foreach($company->projects as $project)
-      		<div class="col-lg-4">
+      		<div class="col-lg-4 col-md-4 col-sm-4">
       			<h2>{{$project->name}}</h2>
       			<p class="text-danger">{{$project->description}}</p>
       			<p>

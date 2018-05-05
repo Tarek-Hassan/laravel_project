@@ -15,7 +15,36 @@
       	</div>
 
       	<!-- Example row of columns -->
-      	
+		<div class="row containar-fluid col-md-12 col-lg-12 col-sm-12 " style="background:white; margin: 10px">
+		<br/>
+		
+      		<form action="{{route('comments.store')}}" method="post" accept-charset="utf-8">
+      			{{csrf_field()}}
+      			
+				<input type="hidden" name="commentable_id" value="{{$project->id}}">
+				<input type="hidden" name="commentable_type" value="App\Project">
+      			<div class="form-group">
+      				<label for="comment-content">enter your comment</label>
+      				<textarea  class="form-control autosize-target text-left" id="comment-content" required rows="3" name="commentBody" placeholder="Enter your comment" style="resize: vertical;" ></textarea>
+      			</div>
+				<div class="form-group">
+      				<label for="comment-content">proof your comment(url/screen Shots)</label>
+      				<textarea  class="form-control autosize-target text-left" id="comment-content" required rows="2" name="commentUrl" placeholder="Enter your (url/screen Shots)" style="resize: vertical;" ></textarea>
+      			</div>
+      			
+      			<button type="submit" class="btn btn-primary">Submit</button>
+      		</form>
+
+      	</div>
+		{{<!--@foreach($project->comments as $comment)
+				<div class="col-lg-4 col-md-4 col-sm-4">
+					<h2>{{$comment->body}}</h2>
+					<p class="text-danger">{{$comment->url}}</p>
+					<p>
+						<a class="btn btn-primary" href="/projects/{{$project->id}}" role="button">View project »</a>
+					</p>
+				</div>
+		@endforeach-->}}
       </div>
 
 
