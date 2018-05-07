@@ -48,7 +48,7 @@ class User extends Authenticatable
     }
 	public function comments()
     {
-        return $this->morphTo('App\Comment','commentable');
+        return $this->morphMany('App\Comment','commentable');
     }
 
 }

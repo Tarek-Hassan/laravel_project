@@ -16,6 +16,7 @@
 
       	<!-- Example row of columns -->
 		<div class="row containar-fluid col-md-12 col-lg-12 col-sm-12 " style="background:white; margin: 10px">
+		@include('partials.comments')
 		<br/>
 		
       		<form action="{{route('comments.store')}}" method="post" accept-charset="utf-8">
@@ -36,23 +37,16 @@
       		</form>
 
       	</div>
-		{{<!--@foreach($project->comments as $comment)
-				<div class="col-lg-4 col-md-4 col-sm-4">
-					<h2>{{$comment->body}}</h2>
-					<p class="text-danger">{{$comment->url}}</p>
-					<p>
-						<a class="btn btn-primary" href="/projects/{{$project->id}}" role="button">View project »</a>
-					</p>
-				</div>
-		@endforeach-->}}
-      </div>
+				
+			
+	     </div>
 
 
       <div class="col-sm-3 col-md-3 col-lg-3  pull-right">
       	<div class="sidebar-module">
       		<h4>Actions</h4>
       		<ol class="list-unstyled">
-      			<li><a href="/projects/{{$project->id}}/edit">Edite</a></li>
+      			<li><a href="/projects/{{$project->id}}/edit"> <i class="fa fa-edit"></i> Edite</a></li>
       			
       			<li><a href="/projects">Viewprojects</a></li>
       			<br/>

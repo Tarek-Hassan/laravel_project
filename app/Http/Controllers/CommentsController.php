@@ -37,8 +37,6 @@ class CommentsController extends Controller
     public function store(Request $request)
     {
         //
-		$a=$request->input('commentable_type');
-		dump($a);
 		 if(Auth::check()){
          $comment=Comment::create([
             'body'=>$request->input('commentBody'),

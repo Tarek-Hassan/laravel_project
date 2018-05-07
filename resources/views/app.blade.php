@@ -40,18 +40,32 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
+                    <ul class="nav navbar-nav navbar-right glyphicon glyphicon-user " >
                         <!-- Authentication Links -->
                         @guest
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
+                        <li><a href="{{ route('login') }}" > <i class="fa fa-sigin-in"></i> Login</a></li>
+                        <li><a href="{{ route('register') }}"> <i class="fa fa-user-plus"></i> Register</a></li>
                         @else
-                         <li><a href="{{ route('companies.index') }}">my compaines</a></li>
-                        <li><a href="{{ route('projects.index') }}">Projects</a></li>
-                         <li><a href="{{ route('tasks.index') }}">Tasks</a></li>
-                        <li class="dropdown">
+                         <li><a href="{{ route('companies.index') }}"> <i class="fa fa-building"></i> my compaines</a></li>
+                        <li><a href="{{ route('projects.index') }}"> <i class="fa fa-briefcase"></i> Projects</a></li>
+                         <li><a href="{{ route('tasks.index') }}"> <i class="fa fa-tasks"></i> Tasks</a></li>
+                        @if(Auth::user()->role_id ==1)
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+								   <i class="fa fa-user"></i> Admin <span class="caret"></span>
+								</a>
+
+								<ul class="dropdown-menu">
+									<li><a href="{{ route('companies.index') }}"> <i class="fa fa-building"></i> All compaines</a></li>
+									<li><a href="{{ route('projects.index') }}"> <i class="fa fa-briefcase"></i> All Projects</a></li>
+									<li><a href="{{ route('tasks.index') }}"> <i class="fa fa-tasks"></i> All Tasks</a></li>
+									<li><a href="{{ route('tasks.index') }}"> <i class="fa fa-user"></i> All Users</a></li>
+								</ul>
+							</li>
+						@endif
+						<li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                               <i class="fa fa-user"></i> {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <ul class="dropdown-menu">
@@ -59,7 +73,7 @@
                                     <a href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                                    Logout
+                                    <i class="fa fa-power-off"></i> Logout
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -74,6 +88,7 @@
         </div>
     </nav>
     <div class="container">
+	
           @include('partials.errors')
           @include('partials.success')
         <div class="row">
@@ -86,5 +101,7 @@
 
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>
+
+<script src="{{ asset('js/fontawesom.js') }}"></script>
 </body>
 </html>

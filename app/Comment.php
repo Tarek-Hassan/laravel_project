@@ -11,9 +11,9 @@ class Comment extends Model
         'body', 'url','user_id', 'commentable_id','commentable_type',
     ];
 
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany ('App\User');
+        return $this->hasOne('App\User','id','user_id');
     }
 	
 	public function commentable()

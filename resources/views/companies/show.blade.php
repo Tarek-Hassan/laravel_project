@@ -33,7 +33,7 @@
       	<div class="sidebar-module">
       		<h4>Actions</h4>
       		<ol class="list-unstyled">
-      			<li><a href="/companies/{{$company->id}}/edit">Edite</a></li>
+      			<li><a href="/companies/{{$company->id}}/edit"> <i class="fa fa-edit"></i> Edite</a></li>
       			<li><a href="/companies">ViewCompanies</a></li>
       			<li><a href="/companies/create">AddNewcompanies</a></li>
       			<li><a href="/projects/create/{{ $company->id }}">AddNewProject</a></li>

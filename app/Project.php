@@ -26,7 +26,7 @@ public function companies()
 	
 	public function comments()
     {
-        return $this->morphTo('App\Comment','commentable');
+        return $this->morphMany('App\Comment','commentable');
     }
 
 }
