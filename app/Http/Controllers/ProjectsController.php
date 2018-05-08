@@ -23,7 +23,11 @@ class ProjectsController extends Controller
         }
         return view('auth.login');
     }
-
+	
+	public function adduser()
+		{
+        
+		}
     /**
      * Show the form for creating a new resource.
      *

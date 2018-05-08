@@ -27,7 +27,12 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
    
-    
+   /** const admin=1;
+	const moderator=2;
+	const user=3;
+	public function isAdmin(){return this->role_id=admin;}
+	public function isModerator(){return this->role_id=moderator;}
+	public function isUser(){return this->role_id=user;}/**/
 
      public function companies()
     {

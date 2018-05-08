@@ -70,11 +70,30 @@
       			</li>
 				@endif
       		</ol>
+			<br/>
+			////////////
+			<h4>Add_Members</h4>
+			<div class="row">
+				<div class="col-md-12 col-lg-12 col-sm-12">
+				
+			
+				<form  id="add-user" action="{{route('projects.adduser',[$project->id])}}" 
+      					method="post" accept-charset="utf-8">
+					<div class="input-group">
+						<input type="text" class="form-control" placeholder="Emial">
+						<span class="input-group-btn">
+							<button class="btn btn-primary" type="submit">Add!</button>
+						</span>
+					</div><!-- /input-group -->
+				</form> >
+				</div><!-- /.col-lg-6 -->
+			</div><!-- /.row -->
       	</div>
+		<br/>////////////////
       	<div class="sidebar-module">
       		<h4>Members</h4>
       		<ol class="list-unstyled">
-      			<li><a href="#">March 2014</a></li>
+      			<li><a href="">{{Auth::user()->name}}</a></li>
 
       		</ol>
       	</div> 

@@ -31,18 +31,18 @@
 Route::get('/',function(){ return view('welcome');});
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
-Route::middleware(['auth'])->group(function(){
-	
-	
-	
-Route::get('projects/create/{company_id?}', 'ProjectsController@create');
-Route::resource('companies','CompaniesController');
-Route::resource('projects','ProjectsController');
-Route::resource('roles','RolesController');
-Route::resource('tasks','TasksController');
-Route::resource('users','UsersController');
-Route::resource('comments','CommentsController');
-});
+
+Route::middleware(['auth'])->group(function()
+	{
+		Route::post('projects/adduser/{project_id?}', 'ProjectsController@adduser');
+		Route::get('projects/create/{company_id?}', 'ProjectsController@create');
+		Route::resource('companies','CompaniesController');
+		Route::resource('projects','ProjectsController');
+		Route::resource('roles','RolesController');
+		Route::resource('tasks','TasksController');
+		Route::resource('users','UsersController');
+		Route::resource('comments','CommentsController');
+	});
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
