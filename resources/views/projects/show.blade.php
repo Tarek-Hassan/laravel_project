@@ -76,9 +76,7 @@
 			<div class="row">
 				<div class="col-md-12 col-lg-12 col-sm-12">
 				
-			
-				<form  id="add-user" action="{{route('projects.adduser')}}" 
-      					method="post" accept-charset="utf-8">
+				<form  id="add-user" action="{{route('project.adduser')}}" method="post" accept-charset="utf-8">
 						{{csrf_field()}}
 					<div class="input-group">
 					<input type="hidden" name="project_id" value="{{$project->id}}">
@@ -88,21 +86,23 @@
 						</span>
 					</div><!-- /input-group -->
 				</form> 
+			
 				</div><!-- /.col-lg-6 -->
 			</div><!-- /.row -->
       	</div> 
 		
 		<br/>
-		
-      	<div class="sidebar-module">
+			<div class="sidebar-module">
       		<h4>Members</h4>
-      		<ol class="list-unstyled">
+			<ol class="list-unstyled">
 			@foreach($project->users as $user) 
-      			<li><a href="">name:{{$user->name}}   email:{{$user->email}}</a></li>
+      			<li><a href="#"> Email:{{$user->email}} ({{$user->name}})</a></li>
 			@endforeach
 
       		</ol>
+      		
       	</div> 
+      
       	<!-- <div class="sidebar-module sidebar-module-inset">
       		<h4>About</h4>
       		<p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>

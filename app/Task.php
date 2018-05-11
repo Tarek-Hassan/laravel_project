@@ -9,7 +9,7 @@ class Task extends Model
     //
     protected $fillable = [
         'name', 'description','days','hours','user_id', 'project_id','company_id',
-    ];
+    ]; 
     public function users()
     {
         return $this->belongsToMany('App\User');

@@ -33,6 +33,7 @@
                                    {{$comment->url}}
                                 </p>
                             </div>
+							<hr/>
                         </li>
 						@endforeach
                        
