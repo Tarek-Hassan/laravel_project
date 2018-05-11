@@ -71,29 +71,35 @@
 				@endif
       		</ol>
 			<br/>
-			////////////
+			
 			<h4>Add_Members</h4>
 			<div class="row">
 				<div class="col-md-12 col-lg-12 col-sm-12">
 				
 			
-				<form  id="add-user" action="{{route('projects.adduser',[$project->id])}}" 
+				<form  id="add-user" action="{{route('projects.adduser')}}" 
       					method="post" accept-charset="utf-8">
+						{{csrf_field()}}
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Emial">
+					<input type="hidden" name="project_id" value="{{$project->id}}">
+						<input type="text" class="form-control" name="email" placeholder="Emial">
 						<span class="input-group-btn">
 							<button class="btn btn-primary" type="submit">Add!</button>
 						</span>
 					</div><!-- /input-group -->
-				</form> >
+				</form> 
 				</div><!-- /.col-lg-6 -->
 			</div><!-- /.row -->
-      	</div>
-		<br/>////////////////
+      	</div> 
+		
+		<br/>
+		
       	<div class="sidebar-module">
       		<h4>Members</h4>
       		<ol class="list-unstyled">
-      			<li><a href="">{{Auth::user()->name}}</a></li>
+			@foreach($project->users as $user) 
+      			<li><a href="">name:{{$user->name}}   email:{{$user->email}}</a></li>
+			@endforeach
 
       		</ol>
       	</div> 
